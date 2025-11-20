@@ -1,4 +1,6 @@
 import React from "react";
+import './style.css';
+
 export default class Welcome extends React.Component {
     constructor(props) {
         super(props);
@@ -7,7 +9,7 @@ export default class Welcome extends React.Component {
     render() {
         return <div>
             <div>This is welcome class component</div>
-            <div><b>Props Example: Employee name is {this.props.user} and Employee code is {this.props.employeeCode}</b></div>
+            <div className="message"><b>Props Example: Employee name is {this.props.user} and Employee code is {this.props.employeeCode}</b></div>
         </div>
     }
 }
