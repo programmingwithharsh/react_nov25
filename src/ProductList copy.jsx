@@ -1,3 +1,4 @@
+import Product from "./Product";
 import "./style.css"; // Import CSS File
 
 export default function ProductList(props) {
@@ -19,15 +20,7 @@ export default function ProductList(props) {
                 </thead>
                 <tbody>
                     {props.products.map((product, index) => (
-                        <tr key={index}>
-                            <td><img src={product.imageUrl} width="50" height="50" /></td>
-                            <td>{product.productName}</td>
-                            <td>{product.productCode}</td>
-                            <td>{product.releaseDate}</td>
-                            <td>{product.description}</td>
-                            <td>{product.price}</td>
-                            <td>{product.starRating}</td>
-                        </tr>
+                        <Product data="This is Props data" key={index} product={product} />
                     ))}
                 </tbody>
             </table>
