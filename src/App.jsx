@@ -2,18 +2,18 @@ import React from "react";
 import AddProduct from "./AddProduct";
 import Welcome from "./Welcome";
 import ProductList from "./ProductList";
-import Product from "./Product";
 import Title from "./Title";
 import Star from "./Star";
 
 export default class App extends React.Component { // Exporting a component
-    constructor() { // component lifecycle
-        super();
+    constructor(props) { // component lifecycle
+        super(props);
         console.log('Constructor 1');
         this.state = {
             username: "Sumit",
             address: "Mumbai"
         }
+        console.log(this.props);
     }
     componentDidMount() {
         console.log('ComponentDidMount 3');
@@ -40,9 +40,8 @@ export default class App extends React.Component { // Exporting a component
             <div><b>State username is {this.state.username}</b></div>
             <button onClick={this.updateUsername}>Update username state</button>
             <AddProduct />
-            <Welcome />
-            <ProductList />
-            <Product />
+            <Welcome title="Welcome" user="Devender" employeeCode="200" />
+            <ProductList message="Product List" />
             <Title />
             <Star />
         </div>
