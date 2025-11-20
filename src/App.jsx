@@ -37,7 +37,7 @@ export default class App extends React.Component { // Exporting a component
         console.log(this.state);
         return <div>
             <div>This is App class Component</div>
-            <div><b>State usename is {this.state.username}</b></div>
+            <div><b>State username is {this.state.username}</b></div>
             <button onClick={this.updateUsername}>Update username state</button>
             <AddProduct />
             <Welcome />
