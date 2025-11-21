@@ -88,12 +88,12 @@ export default class App extends React.Component { // Exporting a component
         console.log('Render 2');
         console.log(this.state);
         let myStyle = { color: 'white', backgroundColor: 'green', border: "2px solid red", margin: "10px" };
-        return <div>
+        return <div className="container">
             <div style={myStyle}>This is App class Component</div>
             <div style={myStyle}>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit eaque minus reprehenderit explicabo laudantium ducimus iste perferendis nihil eos nulla, vitae nesciunt ullam magnam esse. Molestias quisquam minus amet numquam!</div>
 
             <div style={{ color: 'white', backgroundColor: 'blue' }}><b>State username is {this.state.username}</b></div>
-            <button onClick={this.updateUsername}>Update username state</button>
+            <button className="btn btn-primary m-4" onClick={this.updateUsername}>Update username state</button>
             <AddProduct />
             <Welcome title="Welcome" user="Devender" employeeCode="200" />
             <ProductList message="Product List" products={this.state.products} />
