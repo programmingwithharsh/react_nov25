@@ -4,6 +4,8 @@ import Welcome from "./Welcome";
 import ProductList from "./ProductList";
 import Title from "./Title";
 import Star from "./Star";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Nav from "./Nav";
 
 export default class App extends React.Component { // Exporting a component
     constructor(props) { // component lifecycle
@@ -87,18 +89,15 @@ export default class App extends React.Component { // Exporting a component
     render() { // lifecycle
         console.log('Render 2');
         console.log(this.state);
-        let myStyle = { color: 'white', backgroundColor: 'green', border: "2px solid red", margin: "10px" };
-        return <div className="container">
-            <div style={myStyle}>This is App class Component</div>
-            <div style={myStyle}>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit eaque minus reprehenderit explicabo laudantium ducimus iste perferendis nihil eos nulla, vitae nesciunt ullam magnam esse. Molestias quisquam minus amet numquam!</div>
-
-            <div style={{ color: 'white', backgroundColor: 'blue' }}><b>State username is {this.state.username}</b></div>
-            <button className="btn btn-primary m-4" onClick={this.updateUsername}>Update username state</button>
-            <AddProduct />
-            <Welcome title="Welcome" user="Devender" employeeCode="200" />
-            <ProductList message="Product List" products={this.state.products} />
-            <Title />
-            <Star />
-        </div>
+        return <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Nav />}>
+                    <Route index element={<Welcome title="Welcome" user="Devender" employeeCode="200" />} />
+                    <Route path="/products" element={<ProductList message="Product List" products={this.state.products} />} />
+                    <Route path="/addproduct" element={<AddProduct />} />
+                    <Route path="/title" element={<Title />} />
+                </Route>
+            </Routes>
+        </BrowserRouter>
     }
 }
