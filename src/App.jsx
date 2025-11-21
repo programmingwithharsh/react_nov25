@@ -6,6 +6,12 @@ import Title from "./Title";
 import Star from "./Star";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Nav from "./Nav";
+import Courses from './Courses';
+import Course from './Course';
+import Contact from './Contact';
+import Login from './Login';
+import PageNotFound from "./PageNotFound";
+import ProductDetail from "./ProductDetail";
 
 export default class App extends React.Component { // Exporting a component
     constructor(props) { // component lifecycle
@@ -94,8 +100,14 @@ export default class App extends React.Component { // Exporting a component
                 <Route path="/" element={<Nav />}>
                     <Route index element={<Welcome title="Welcome" user="Devender" employeeCode="200" />} />
                     <Route path="/products" element={<ProductList message="Product List" products={this.state.products} />} />
+                    <Route path="/products/:id" element={<ProductDetail />} />
                     <Route path="/addproduct" element={<AddProduct />} />
                     <Route path="/title" element={<Title />} />
+                    <Route path="/courses" element={<Courses />} />
+                    <Route path="/course" element={<Course />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/contact" element={<Contact />} />
+                    <Route path="*" element={<PageNotFound />} />
                 </Route>
             </Routes>
         </BrowserRouter>

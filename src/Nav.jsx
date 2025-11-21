@@ -2,43 +2,41 @@ import { Link, Outlet } from 'react-router-dom';
 
 function Nav() {
     return <div>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
-                <Link class="navbar-brand" to="/">OSTraining</Link>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+        <nav className="navbar navbar-expand-lg bg-body-tertiary">
+            <div className="container-fluid">
+                <Link className="navbar-brand" to="/">OSTraining</Link>
+                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <Link class="nav-link active" to="/">Home</Link>
+                <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li className="nav-item">
+                            <Link className="nav-link active" to="/">Home</Link>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Courses (not ready)
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">HTML</a></li>
-                                <li><a class="dropdown-item" href="#">CSS</a></li>
-                                <li><a class="dropdown-item" href="#">Javascript</a></li>
-                                <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="#">React</a></li>
+                        <li className="nav-item dropdown">
+                            <Link className="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" to="/courses">Courses</Link>
+                            <ul className="dropdown-menu">
+                                <li><Link className="dropdown-item" to="/course">HTML</Link></li>
+                                <li><Link className="dropdown-item" to="/course">CSS</Link></li>
+                                <li><Link className="dropdown-item" to="/course">Javascript</Link></li>
+                                <li><hr className="dropdown-divider" /></li>
+                                <li><Link className="dropdown-item" to="/course">React</Link></li>
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            <Link class="nav-link active" to="/">Contact (not ready)</Link>
+                        <li className="nav-item">
+                            <Link className="nav-link active" to="/contact">Contact</Link>
                         </li>
-                        <li class="nav-item">
-                            <Link class="nav-link" to="/">Login (not ready)</Link>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/login">Login</Link>
                         </li>
-                        <li class="nav-item">
-                            <Link class="nav-link" to="/products">Products</Link>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/products">Products</Link>
                         </li>
-                        <li class="nav-item">
-                            <Link class="nav-link" to="/addproduct">Add Product</Link>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/addproduct">Add Product</Link>
                         </li>
-                        <li class="nav-item">
-                            <Link class="nav-link" to="/title">Title</Link>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/title">Title</Link>
                         </li>
                     </ul>
                 </div>

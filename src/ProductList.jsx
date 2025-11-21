@@ -1,10 +1,10 @@
 import "./style.css"; // Import CSS File
-
+import { Link } from "react-router-dom";
 export default function ProductList(props) {
     console.log(props); // receive props value in functional component
     return <div>
         <div>This is Product list functional component</div>
-        <div class="table-responsive">
+        <div className="table-responsive">
             <table className="table table-striped table-bordered table-hover">
                 <thead>
                     <tr>
@@ -21,7 +21,7 @@ export default function ProductList(props) {
                     {props.products.map((product, index) => (
                         <tr key={index}>
                             <td><img src={product.imageUrl} width="50" height="50" /></td>
-                            <td>{product.productName}</td>
+                            <td><Link to={`/products/${product.productId}`}>{product.productName}</Link></td>
                             <td>{product.productCode}</td>
                             <td>{product.releaseDate}</td>
                             <td>{product.description}</td>
