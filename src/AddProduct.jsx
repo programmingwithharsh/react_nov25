@@ -42,6 +42,7 @@ export default class AddProduct extends React.Component {
     }
 
     render() {
+        // ES6 Object Destructuring
         const { redirect } = this.state;
         // use if else beore return statement
         /*

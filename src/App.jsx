@@ -12,11 +12,12 @@ import Contact from './Contact';
 import Login from './Login';
 import PageNotFound from "./PageNotFound";
 import ProductDetail from "./ProductDetail";
+import HooksExample from "./Hooks/HooksExample";
 
 export default class App extends React.Component { // Exporting a component
     constructor(props) { // component lifecycle
         super(props);
-        console.log('Constructor 1');
+        // console.log('Constructor 1');
         this.state = {
             username: "Sumit",
             address: "Mumbai",
@@ -73,10 +74,10 @@ export default class App extends React.Component { // Exporting a component
                 }
             ]
         }
-        console.log(this.props);
+        // console.log(this.props);
     }
     componentDidMount() {
-        console.log('ComponentDidMount 3');
+        // console.log('ComponentDidMount 3');
         /*
             This is the best place for calling the APIs, it calls after render
 
@@ -93,8 +94,8 @@ export default class App extends React.Component { // Exporting a component
     }
 
     render() { // lifecycle
-        console.log('Render 2');
-        console.log(this.state);
+        // console.log('Render 2');
+        // console.log(this.state);
         return <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Nav />}>
@@ -107,6 +108,7 @@ export default class App extends React.Component { // Exporting a component
                     <Route path="/course" element={<Course />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/contact" element={<Contact />} />
+                    <Route path="/hooks" element={<HooksExample />} />
                     <Route path="*" element={<PageNotFound />} />
                 </Route>
             </Routes>
