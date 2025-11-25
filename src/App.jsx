@@ -13,6 +13,7 @@ import Login from './Login';
 import PageNotFound from "./PageNotFound";
 import ProductDetail from "./ProductDetail";
 import HooksExample from "./Hooks/HooksExample";
+import ReactBootstrap from "./react-bootstrap/ReactBootstrap";
 
 export default class App extends React.Component { // Exporting a component
     constructor(props) { // component lifecycle
@@ -109,6 +110,7 @@ export default class App extends React.Component { // Exporting a component
                     <Route path="/login" element={<Login />} />
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/hooks" element={<HooksExample />} />
+                    <Route path="/reactbootstrap" element={<ReactBootstrap />} />
                     <Route path="*" element={<PageNotFound />} />
                 </Route>
             </Routes>
