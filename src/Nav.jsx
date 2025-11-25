@@ -45,7 +45,7 @@ function Nav() {
                 </div>
             </div>
         </nav>
-        <div className='container'><Outlet /></div>
+        <div className='container-fluid'><Outlet /></div>
     </div>
 }
 

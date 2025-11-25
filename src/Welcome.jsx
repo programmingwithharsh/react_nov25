@@ -1,5 +1,10 @@
 import React from "react";
 import './style.css';
+import Slider from "./Bootstrap/Slider";
+import Card from "./Bootstrap/Card";
+import Modal from "./Bootstrap/Modal";
+import Grid from "./Bootstrap/Grid";
+import Footer from "./Footer";
 
 export default class Welcome extends React.Component {
     constructor(props) {
@@ -46,8 +51,10 @@ export default class Welcome extends React.Component {
     }
     render() {
         return <div>
-            <div>This is welcome class component</div>
-            <div className="message"><b>Props Example: Employee name is {this.props.user} and Employee code is {this.props.employeeCode}</b></div>
+            <Slider />
+            <Modal />
+            <Grid />
+            <Footer/>
         </div>
     }
 }

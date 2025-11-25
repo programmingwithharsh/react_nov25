@@ -2,3 +2,11 @@
   color: white;
   background-color: blueviolet;
 }
+
+.modal-footer {
+  border-top: none !important;
+}
+
+.customBorder {
+  border: 2px solid red;
+}

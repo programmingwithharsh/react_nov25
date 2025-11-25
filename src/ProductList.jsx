@@ -1,4 +1,3 @@
-import "./style.css"; // Import CSS File
 import { Link } from "react-router-dom";
 import Star from "./Star";
 
