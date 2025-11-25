@@ -3,6 +3,7 @@ import React from 'react';
 import App from './App'; // Import App component
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.bundle.js'; // Few Bootstrap Components need this
+import 'font-awesome/css/font-awesome.css';
 
 const username = "Dinesh"; // string
 const interests = ["Playing basketball", "Playing badminton", "Swimming", "Chess"]; // array

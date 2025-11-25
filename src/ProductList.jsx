@@ -1,5 +1,7 @@
 import "./style.css"; // Import CSS File
 import { Link } from "react-router-dom";
+import Star from "./Star";
+
 export default function ProductList(props) {
     console.log(props); // receive props value in functional component
     return <div>
@@ -26,7 +28,7 @@ export default function ProductList(props) {
                             <td>{product.releaseDate}</td>
                             <td>{product.description}</td>
                             <td>{product.price}</td>
-                            <td>{product.starRating}</td>
+                            <td><Star rating={product.starRating} /></td>
                         </tr>
                     ))}
                 </tbody>
