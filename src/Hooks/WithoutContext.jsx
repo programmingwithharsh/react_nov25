@@ -3,6 +3,7 @@ import { useState } from "react";
 const WithoutContext = () => {
     const [username, setUsername] = useState("Sumit"); // username is Sumit
     return (<div>
+        <h1>Without Context</h1>
         <div>In Component 1, Username is {username}</div>
         <C2 username={username} setUsername={setUsername} />
     </div>);

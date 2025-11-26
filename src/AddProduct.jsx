@@ -12,7 +12,7 @@ export default class AddProduct extends React.Component {
 
     handleSubmit = (event) => {
         event.preventDefault(); // stop page refresh when i click on submit
-        const productName = event.target.elements.productName.value;
+        const productName = event.target.elements.productName.value; // uses DOM values
         const productCode = event.target.elements.productCode.value;
         const releaseDate = event.target.elements.releaseDate.value;
         const description = event.target.elements.description.value;
