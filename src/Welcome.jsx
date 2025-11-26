@@ -7,6 +7,7 @@ import Grid from "./Bootstrap/Grid";
 import Footer from "./Footer";
 
 export default class Welcome extends React.Component {
+    // export default class Welcome extends React.PureComponent {
     constructor(props) {
         super(props);
         console.log(this.props); // receive props value in class component
@@ -48,13 +49,52 @@ export default class Welcome extends React.Component {
         console.log(localStorage.getItem("x")); // get item from localstorage
         console.log(JSON.parse(localStorage.getItem("user"))); // JSON.parse - convert string into object 
         console.log(JSON.parse(localStorage.getItem("users"))); // JSON.parse - convert string into object 
+        this.state = {
+            count: 0
+        }
+        console.log('Constructor - 1');
     }
+
+    increment = () => {
+        this.setState({
+            count: 1
+        })
+    }
+
+    componentDidMount() {
+        console.log('ComponentDidMount - 3');
+    }
+
+    componentWillUnmount() {
+        // Clean up work here, clear intervals, cancel API calls, unsubscribe, clean up memory
+        console.log('ComponentWillUnmount - 4');
+    }
+
+    shouldComponentUpdate() {
+        return true; // allow re render, defult
+        // return false; // block re render
+    }
+
+    getSnapshotBeforeUpdate(prevProps, prevState) {
+        document.getElementById("div1").innerHTML = "Before update, count is " + prevState.count;
+        return true;
+    }
+
+    componentDidUpdate() {
+        document.getElementById("div2").innerHTML = "After update, count is " + this.state.count;
+    }
+
     render() {
+        console.log('Render - 2');
+        console.log(this.state);
         return <div>
+            <div id="div1">Before update</div>
+            <div id="div2">After update</div>
+            <button className="btn btn-primary" onClick={this.increment}>Increment</button>
             <Slider />
             <Modal />
             <Grid />
-            <Footer/>
+            <Footer />
         </div>
     }
 }
