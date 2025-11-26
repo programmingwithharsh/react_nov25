@@ -14,6 +14,7 @@ import PageNotFound from "./PageNotFound";
 import ProductDetail from "./ProductDetail";
 import HooksExample from "./Hooks/HooksExample";
 import ReactBootstrap from "./react-bootstrap/ReactBootstrap";
+import EditProduct from "./EditProduct";
 
 export default class App extends React.Component { // Exporting a component
     constructor(props) { // component lifecycle
@@ -22,7 +23,7 @@ export default class App extends React.Component { // Exporting a component
         this.state = {
             username: "Sumit",
             address: "Mumbai",
-            products: [
+            products: [ // default products
                 {
                     "productId": 1,
                     "productName": "Leaf Rake",
@@ -78,13 +79,8 @@ export default class App extends React.Component { // Exporting a component
         // console.log(this.props);
     }
     componentDidMount() {
-        // console.log('ComponentDidMount 3');
         /*
-            This is the best place for calling the APIs, it calls after render
-
-            APIs calls in React 
-                Javascript fetch method
-                Axios module 
+            1. Get products data from localstorage and update products state
         */
     }
 
@@ -103,6 +99,7 @@ export default class App extends React.Component { // Exporting a component
                     <Route index element={<Welcome title="Welcome" user="Devender" employeeCode="200" />} />
                     <Route path="/products" element={<ProductList message="Product List" products={this.state.products} />} />
                     <Route path="/products/:id" element={<ProductDetail />} />
+                    <Route path="/editproduct/:id" element={<EditProduct />} />
                     <Route path="/addproduct" element={<AddProduct />} />
                     <Route path="/title" element={<Title />} />
                     <Route path="/courses" element={<Courses />} />

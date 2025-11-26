@@ -3,6 +3,15 @@ import Star from "./Star";
 
 export default function ProductList(props) {
     console.log(props); // receive props value in functional component
+    const confirmOk = () => {
+        /*
+            // This function needs id
+            1. Get products data from localstorage using localstorage.getItem
+            2. Filter products data from localstorage based on id
+            3. Set data in localstorage again
+        */
+        alert('OK');
+    }
     return <div>
         <div>This is Product list functional component</div>
         <div className="table-responsive">
@@ -16,6 +25,7 @@ export default function ProductList(props) {
                         <th>Description</th>
                         <th>Price</th>
                         <th>Rating</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -28,11 +38,30 @@ export default function ProductList(props) {
                             <td>{product.description}</td>
                             <td>{product.price}</td>
                             <td><Star rating={product.starRating} /></td>
+                            <td><Link to={`/editproduct/${product.productId}`}>Edit</Link> |<button className="btn btn-link" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button></td>
                         </tr>
                     ))}
                 </tbody>
             </table>
         </div>
         <div className="message"><strong>Props Example: Message is {props.message}</strong></div>
+
+        <div className="modal fade" id="deleteModal" tabIndex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div className="modal-dialog">
+                <div className="modal-content">
+                    <div className="modal-header">
+                        <h1 className="modal-title fs-5" id="deleteModalLabel">Confirm Product Deletion</h1>
+                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div className="modal-body">
+                        Are you sure?
+                    </div>
+                    <div className="modal-footer">
+                        <button type="button" className="btn btn-primary" onClick={confirmOk}>OK</button>
+                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 }

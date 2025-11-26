@@ -6,7 +6,10 @@ const UseEffectHookExample = () => {
     const [data2, setData2] = useState([{ name: "Rahul" }]); // default value inside state
 
     useEffect(() => {
-        fetch("https://jsonplaceholder.typicode.com/users")
+        // Getting a resource
+        fetch("http://localhost:3000/", {
+            method: "GET"
+        })
             .then((response) => response.json())
             .then((responseData) => {
                 console.log("fetch", responseData);
@@ -15,10 +18,52 @@ const UseEffectHookExample = () => {
     }, []) // effect will run onle once
 
     useEffect(() => {
+        // Creating a resource
+        fetch("http://localhost:3000/", {
+            method: "POST",
+            body: JSON.stringify({
+                fullname: "Hardika"
+            }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            }
+        })
+            .then((response) => response.json())
+            .then((responseData) => {
+                console.log("fetch", responseData);
+            })
+    }, []) // effect will run onle once
+
+    useEffect(() => {
+        // Updating a resource
+        fetch("http://localhost:3000/", {
+            method: "PUT",
+            body: JSON.stringify({
+                fullname: "Hardika"
+            }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            }
+        })
+            .then((response) => response.json())
+            .then((responseData) => {
+                console.log("fetch", responseData);
+            })
+    }, []) // effect will run onle once
+
+    useEffect(() => {
+        // Deleting a resource
+        fetch('http://localhost:3000/', {
+            method: 'DELETE',
+        });
+    }, [])
+
+    useEffect(() => {
         // Make a request for a user with a given ID
-        axios.get('https://jsonplaceholder.typicode.com/users')
+        axios.get('http://localhost:3000/')
             .then(function (response) {
                 // handle success
+                // debugger;
                 console.log("Axios", response);
                 setData2(response.data);
             })
@@ -31,19 +76,18 @@ const UseEffectHookExample = () => {
             });
     }, [])
 
-
     return (<div>
-        <h1>List of Users using useState and useEffect Hook and fetch method</h1>
+        <h1>List of Users using useState and useEffect Hook and fetch method GET API Call</h1>
         <ul>
             {data.map((user, index) => (
-                <li key={index}>{user.name}</li>
+                <li key={index}>{user.fullname}</li>
             ))}
         </ul>
 
         <h1>List of Users using useState and useEffect Hook and axios module</h1>
         <ul>
             {data2.map((user, index) => (
-                <li key={index}>{user.name}</li>
+                <li key={index}>{user.fullname}</li>
             ))}
         </ul>
     </div>);
