@@ -82,6 +82,14 @@ export default class App extends React.Component { // Exporting a component
         /*
             1. Get products data from localstorage and update products state
         */
+        if (!localStorage.getItem("products")) {
+            localStorage.setItem("products", JSON.stringify(this.state.products));
+        }
+
+        const storedProducts = JSON.parse(localStorage.getItem("products")); // load data from localstorage
+        this.setState({ // to update state we use this.setState, whenever state update component rerender
+            products: storedProducts
+        })
     }
 
     updateUsername = () => {
@@ -90,17 +98,35 @@ export default class App extends React.Component { // Exporting a component
         })
     }
 
+    addProduct = (productSubmitted) => {
+        this.setState((state) => {
+            const updateProducts = [...state.products, productSubmitted];
+            localStorage.setItem("products", JSON.stringify(updateProducts)); // saving to localstorage
+            return {
+                products: updateProducts
+            }
+        })
+    }
+
+    updateProduct = (updatedProduct) => {
+        this.setState((state) => ({
+            products: state.products.map(p =>
+                p.productId === updatedProduct.productId ? updatedProduct : p
+            )
+        }))
+    }
+
     render() { // lifecycle
         // console.log('Render 2');
-        // console.log(this.state);
+        console.log("state is ", this.state);
         return <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Nav />}>
                     <Route index element={<Welcome title="Welcome" user="Devender" employeeCode="200" />} />
                     <Route path="/products" element={<ProductList message="Product List" products={this.state.products} />} />
                     <Route path="/products/:id" element={<ProductDetail />} />
-                    <Route path="/editproduct/:id" element={<EditProduct />} />
-                    <Route path="/addproduct" element={<AddProduct />} />
+                    <Route path="/editproduct/:id" element={<EditProduct onUpdateProduct={(p) => this.updateProduct(p)} />} />
+                    <Route path="/addproduct" element={<AddProduct onAddProduct={(addedProduct) => this.addProduct(addedProduct)} />} />
                     <Route path="/title" element={<Title />} />
                     <Route path="/courses" element={<Courses />} />
                     <Route path="/course" element={<Course />} />

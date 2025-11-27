@@ -17,7 +17,8 @@ export default class AddProduct extends React.Component {
         const releaseDate = event.target.elements.releaseDate.value;
         const description = event.target.elements.description.value;
         const price = event.target.elements.price.value;
-        const rating = event.target.elements.rating.value;
+        const starRating = event.target.elements.starRating.value;
+        const imageUrl = event.target.elements.imageUrl.value;
 
         const product = { // create new object
             "productId": Number(new Date()),
@@ -26,7 +27,8 @@ export default class AddProduct extends React.Component {
             "releaseDate": releaseDate,
             "description": description,
             "price": price,
-            "rating": rating
+            "starRating": starRating,
+            "imageUrl": imageUrl
         }
 
         let products = localStorage.getItem('products') ? JSON.parse(localStorage.getItem('products')) : [];
@@ -35,6 +37,7 @@ export default class AddProduct extends React.Component {
             alert("Please enter product name");
         } else {
             localStorage.setItem("products", JSON.stringify(products));
+            this.props.onAddProduct(product); // use props
             this.setState({
                 redirect: true
             })
@@ -70,7 +73,8 @@ export default class AddProduct extends React.Component {
                 Release Date <input className="form-control" type="date" name="releaseDate" />
                 Description <input className="form-control" type="text" name="description" />
                 Price <input className="form-control" type="text" name="price" />
-                Rating <input className="form-control" type="number" name="rating" />
+                Rating <input className="form-control" type="number" name="starRating" />
+                Url <input className="form-control" type="text" name="imageUrl" />
                 <input type="submit" className="btn btn-primary mt-2" value="Add Product" />
             </form>
         </div>

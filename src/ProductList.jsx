@@ -1,16 +1,25 @@
 import { Link } from "react-router-dom";
 import Star from "./Star";
+import { useState } from "react";
 
 export default function ProductList(props) {
     console.log(props); // receive props value in functional component
+    const [deleteId, setDeleteId] = useState(null);
+
+    const openDeleteModal = (id) => {
+        setDeleteId(id);
+    }
     const confirmOk = () => {
         /*
-            // This function needs id
+            // This function needs id - deleteId
             1. Get products data from localstorage using localstorage.getItem
             2. Filter products data from localstorage based on id
             3. Set data in localstorage again
         */
-        alert('OK');
+        const storedProducts = JSON.parse(localStorage.getItem("products")) || [];
+        let updatedProducts = storedProducts.filter(p => p.productId !== deleteId);
+        localStorage.setItem("products", JSON.stringify(updatedProducts));
+        window.location.reload(); // refresh UI 
     }
     return <div>
         <div>This is Product list functional component</div>
@@ -38,7 +47,7 @@ export default function ProductList(props) {
                             <td>{product.description}</td>
                             <td>{product.price}</td>
                             <td><Star rating={product.starRating} /></td>
-                            <td><Link to={`/editproduct/${product.productId}`}>Edit</Link> |<button className="btn btn-link" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button></td>
+                            <td><Link to={`/editproduct/${product.productId}`}>Edit</Link> |<button className="btn btn-link" data-bs-toggle="modal" data-bs-target="#deleteModal" onClick={() => openDeleteModal(product.productId)}>Delete</button></td>
                         </tr>
                     ))}
                 </tbody>
