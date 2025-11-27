@@ -15,6 +15,7 @@ import ProductDetail from "./ProductDetail";
 import HooksExample from "./Hooks/HooksExample";
 import ReactBootstrap from "./react-bootstrap/ReactBootstrap";
 import EditProduct from "./EditProduct";
+import { removeProduct, addProduct, loadProducts } from './redux/actions';
 
 export default class App extends React.Component { // Exporting a component
     constructor(props) { // component lifecycle
@@ -90,6 +91,19 @@ export default class App extends React.Component { // Exporting a component
         this.setState({ // to update state we use this.setState, whenever state update component rerender
             products: storedProducts
         })
+
+        this.props.dispatch(loadProducts()); // calling load products action
+        this.props.dispatch(addProduct({
+            "productId": 6,
+            "productName": "iPhone",
+            "productCode": "555",
+            "releaseDate": "March 19, 2016",
+            "description": "iPhone with 48-inch wooden handle.",
+            "price": 19.95,
+            "starRating": 3.2,
+            "imageUrl": "https://openclipart.org/image/300px/svg_to_png/26215/Anonymous_Leaf_Rake.png"
+        }));
+         this.props.dispatch(removeProduct(1));
     }
 
     updateUsername = () => {

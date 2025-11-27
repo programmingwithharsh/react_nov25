@@ -6,13 +6,15 @@ import 'bootstrap/dist/js/bootstrap.bundle.js'; // Few Bootstrap Components need
 import 'font-awesome/css/font-awesome.css';
 import "./style.css"; // Import CSS File
 
-const username = "Dinesh"; // string
-const interests = ["Playing basketball", "Playing badminton", "Swimming", "Chess"]; // array
-const birth = { // object
-  year: 2000,
-  place: "Bangalore"
-}
+import ReduxExample from './ReduxExample';
+import { legacy_createStore as createStore } from 'redux';
+import { Provider } from 'react-redux';
+import ProductReducer from './redux/reducers'; // importing reducer file
+
+const store = createStore(ProductReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()); // Store setup
 
 createRoot(document.getElementById('root')).render(
-  <App x="2" usernameProps={username} interestsProps={interests} bithProps={birth} />
+  <Provider store={store}>
+    <ReduxExample />
+  </Provider>
 )
