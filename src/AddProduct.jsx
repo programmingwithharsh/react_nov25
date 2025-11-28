@@ -6,7 +6,8 @@ export default class AddProduct extends React.Component {
     constructor() {
         super();
         this.state = {
-            redirect: false
+            redirect: false,
+            address: "Mumbai"
         }
     }
 
@@ -44,6 +45,12 @@ export default class AddProduct extends React.Component {
         }
     }
 
+    static getDerivedStateFromProps(props, state) {
+        return {
+            address: props.address
+        }
+    }
+
     render() {
         // ES6 Object Destructuring
         const { redirect } = this.state;
@@ -67,6 +74,7 @@ export default class AddProduct extends React.Component {
                     <Navigate to="/products" />
                 )
             }
+            <h1>Address is {this.state.address}</h1>
             <form onSubmit={this.handleSubmit}>
                 Product Name<input className="form-control" type="text" name="productName" />
                 Product Code <input className="form-control" type="text" name="productCode" />

@@ -103,7 +103,7 @@ export default class App extends React.Component { // Exporting a component
             "starRating": 3.2,
             "imageUrl": "https://openclipart.org/image/300px/svg_to_png/26215/Anonymous_Leaf_Rake.png"
         }));
-         this.props.dispatch(removeProduct(1));
+        this.props.dispatch(removeProduct(1));
     }
 
     updateUsername = () => {
@@ -140,7 +140,7 @@ export default class App extends React.Component { // Exporting a component
                     <Route path="/products" element={<ProductList message="Product List" products={this.state.products} />} />
                     <Route path="/products/:id" element={<ProductDetail />} />
                     <Route path="/editproduct/:id" element={<EditProduct onUpdateProduct={(p) => this.updateProduct(p)} />} />
-                    <Route path="/addproduct" element={<AddProduct onAddProduct={(addedProduct) => this.addProduct(addedProduct)} />} />
+                    <Route path="/addproduct" element={<AddProduct address="Delhi" onAddProduct={(addedProduct) => this.addProduct(addedProduct)} />} />
                     <Route path="/title" element={<Title />} />
                     <Route path="/courses" element={<Courses />} />
                     <Route path="/course" element={<Course />} />
